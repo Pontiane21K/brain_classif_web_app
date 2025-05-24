@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Tumor Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <img src="{{ url_for('static', filename='examples/6.png') }}" alt="Gamma" class="logo">
+            <h1>EARLY DETECTION<br><span class="highlight">SAVES LIVES</span></h1>
+        </div>
+
+        <div class="right-section">
+            <h2>Brain Tumor Classification<br>Web Application</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <p>
+                    This application allows you to classify a brain tumor image using two models: <strong>PyTorch model</strong> or <strong>TensorFlow model</strong>.<br>
+                    Please follow the steps below to get a prediction.
+                </p>
+
+                <div class="radio-buttons">
+                    <label for="framework">1. Choose the model:</label>
+                    <label><input type="radio" name="framework" value="pytorch" checked> PyTorch</label>
+                    <label><input type="radio" name="framework" value="tensorflow"> TensorFlow</label>
+                </div>
+
+                <p>2.Upload a brain MRI image (JPG or PNG)</p>
+                <input type="file" name="file" required>
+
+                <button type="submit">Start Prediction</button>
+            </form>
+            {% if prediction %}
+                <div class="result">
+                    <p>This image is classified as:</p>
+                    <h3>{{ prediction }}</h3>
+                </div>
+            {% endif %}
+
+            {% if prediction %}
+                <!-- Boîte d'information explicative -->
+                <div class="info-box">
+                    <h3>About the type detected : <span style="color:#d63384">{{ prediction|capitalize }}</span></h3>
+                    <p><strong>Description :</strong> {{ info.desc }}</p>
+                    <p><strong>Advice :</strong> {{ info.advice }}</p>
+                </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+</body>
+</html>
