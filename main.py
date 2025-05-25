@@ -8,11 +8,11 @@ def main():
     args = parser.parse_args()
 
     if args.framework == 'pytorch':
-        print("\n🚀 Lancement de l'entraînement PyTorch...")
+        print("\n Lancement de l'entraînement PyTorch...")
         train_pytorch_model()
 
     elif args.framework == 'tensorflow':
-        print("\n🚀 Lancement de l'entraînement TensorFlow...")
+        print("\n Lancement de l'entraînement TensorFlow...")
         train_generator, test_generator = get_tensorflow_generators()
         train_tensorflow_model(train_generator, test_generator)
 
